@@ -1,0 +1,92 @@
+/*
+ * Support button styles.
+ * Colours pull from the active theme's tokens when present (so the button
+ * matches the Developing Philosopher theme, light and dark), and fall back
+ * to sensible defaults on any other theme.
+ */
+
+.dp-support {
+	position: fixed;
+	right: 1.25rem;
+	bottom: 1.25rem;
+	z-index: 41;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: flex-end;
+	gap: 0.5rem;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* The panel sets its own display, so the plain [hidden] attribute cannot
+   hide it. This rule makes the attribute win, keeping the widget closed to
+   just its button until the reader opens it. */
+.dp-support__panel[hidden] {
+	display: none;
+}
+
+.dp-support__toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.6rem 1rem;
+	border: 1px solid var(--dp-rule, #dcd7cd);
+	border-radius: 999px;
+	background: var(--dp-accent, #28406b);
+	color: #fff;
+	font: inherit;
+	font-size: 0.85rem;
+	font-weight: 600;
+	cursor: pointer;
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+	transition: transform 0.15s ease;
+}
+
+:root[data-theme="dark"] .dp-support__toggle {
+	color: #14171c;
+}
+
+.dp-support__toggle:hover {
+	transform: translateY(-1px);
+}
+
+.dp-support__panel {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	padding: 0.5rem;
+	background: var(--dp-surface, #faf9f5);
+	border: 1px solid var(--dp-rule, #dcd7cd);
+	border-radius: 10px;
+	box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+	min-width: 12rem;
+}
+
+.dp-support__link {
+	display: block;
+	padding: 0.55rem 0.75rem;
+	border-radius: 6px;
+	text-align: center;
+	text-decoration: none;
+	color: var(--dp-ink, #201d1a);
+	font-size: 0.9rem;
+}
+
+.dp-support__link:hover {
+	background: var(--dp-accent-soft, rgba(40, 64, 107, 0.09));
+	color: var(--dp-accent, #28406b);
+}
+
+@media (max-width: 600px) {
+	.dp-support__toggle .dp-support__label {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+	}
+
+	.dp-support__toggle::before {
+		content: "\2665";
+		font-size: 1rem;
+	}
+}

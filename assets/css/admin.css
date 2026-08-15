@@ -1,0 +1,15 @@
+.dpsb-row {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+.dpsb-row input[type="text"] {
+	max-width: 240px;
+}
+
+.dpsb-row input[type="url"] {
+	flex: 1;
+	max-width: 360px;
+}
